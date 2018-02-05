@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="UTF-8">
+    <title>First task</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            font-size: 16px;
+            background-color: #FF9;
+        }
+
+        .container {
+            display: block;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .background-label {
+            display: flex;
+            justify-content: space-between;
+            background-color: #EEE;
+            padding: 5px 8px;
+            border: 1px solid #999;
+            box-shadow: 3px 2px 3px rgba(0, 0, 0, 0.5);
+        }
+
+        .cut-text {
+
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .clear-text {
+            min-width: fit-content;
+            clear: both;
+        }
+
+
+        .background-label>.site-r {
+            color: #666;
+            font-weight: 700;
+        }
+
+        .background-label>.site-l {
+            color: #000;
+        }
+
+
+        .background-label:nth-child(2n) {
+            border-radius: 0 5px 5px 0;
+            margin-top: -1px;
+            margin-left: 30px;
+        }
+
+        .background-label:nth-child(2n-1) {
+            margin-top: -1px;
+            margin-right: 30px;
+            border-radius: 5px 5px 0 5px;
+
+        }
+
+        .background-label:nth-child(2n+1)>.site-r {
+            color: #000000;
+        }
+
+        .background-label:nth-child(2n+1)>.site-l {
+            color: #999999;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="background-label">
+            <div class="site-l">
+                Short text
+            </div>
+            <div class="site-r clear-text">
+                Is short
+            </div>
+        </div>
+        <div class="background-label">
+            <div class="site-l cut-text">
+                A little bit longer text
+            </div>
+            <div class="site-r clear-text">
+                Is longer
+            </div>
+        </div>
+        <div class="background-label">
+            <div class="site-l cut-text">
+                Alsko a little bit longer
+            </div>
+            <div class="site-r clear-text">
+                Yes it is
+            </div>
+        </div>
+        <div class="background-label">
+            <div class="site-l cut-text">
+                A long text is here, totally for no reason
+            </div>
+            <div class="site-r clear-text">
+                Is long.
+            </div>
+        </div>
+        <div class="background-label">
+            <div class="site-l cut-text">
+                A long text is here also, for the same reason
+            </div>
+            <div class="site-r clear-text">
+                Is long too!
+            </div>
+        </div>
+        <div class="background-label">
+            <div class="site-l">
+                OK
+            </div>
+            <div class="site-r">
+                OK
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
