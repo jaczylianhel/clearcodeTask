@@ -4,7 +4,7 @@ let runes = ['El', 'Eld', 'Tir', 'Nef', 'Eth', 'Ith', 'Tal', 'Ral', 'Ort', 'Thul
 
 let power = [28, 33, 9, 7, 31, 22, 8, 25, 18, 13, 6, 10, 17, 11, 12, 20, 32, 27, 14, 26, 15, 16, 21, 4, 23, 24, 1, 2, 30, 3, 5, 29, 19];
 
-let oppositive = ["Ort", "Sur", "Eth", "Ist", "Tir", "Pul", "Io", "Um", "El", "Sol", "Fal", "Thul", "Lem", "Hel", "Dol", "Tal", "Gul", "Mal", "Amn", "Shall", "Ith", "Ral", "Ko", "Nef", "Lum", "Ohm", "Vex", "Cham", "Sur", "Eld", "", "Zod", "Lo", "Jah"];
+let oppositive = ['Ort', 'Sur', 'Eth', 'Ist', 'Tir', 'Pul', 'Io', 'Um', 'El', 'Sol', 'Fal', 'Thul', 'Lem', 'Hel', "Dol", "Tal", "Gul", "Mal", "Amn", "Shael", "Ith", "Ral", "Ko", "Nef", "Lum", "Ohm", "Vex", "Cham", "Eld", " ", "Zod", "Lo", "Jah"];
 
 let tableRune = [];
 let total = [];
@@ -39,6 +39,7 @@ class Word {
 for (let i = 0; i < runes.length; i++) {
     runes[i] = new Runes(i + 1, runes[i], oppositive[i], power[i]);
 }
+console.log(runes);
 //////////////////////////////
 ////sortowanie run od największej siły do najmniejszej
 ///////////////////////////////
@@ -47,6 +48,7 @@ let sortRunes = runes.sort(function (b, a) {
 
     return (a.power > b.power) ? 1 : ((b.power > a.power) ? -1 : 0);
 });
+
 //////////////////////////////
 //funkcja zapisuje runy do tablic tymczasowych
 ///////////////////////////////
@@ -195,6 +197,7 @@ let tmparr = [];
 let sRunicWord = [];
 let tmp;
 let newPower = 0;
+let isOpp = false;
 
 //////////////////////////////
 //czyszczenie tymczasowych tablic
@@ -271,10 +274,28 @@ let countPower2 = () => {
     newPower -= sRunicWord.length;
 }
 
+let checkRunesOpp = () => {
+    for (let i = 0; i < sRunicWord.length; i++) {
+        for (let j = 0; j < runes.length; j++) {
+            if (sRunicWord[i] == runes[j].name) {
+                for (let k = 0; k < sRunicWord.length; k++) {
+                    if (runes[j].opp == sRunicWord[k]) {
+                        console.log("Wrong rune: " + sRunicWord[k]);
+                        isOpp = true;
+                    }
+                }
+            }
+        }
+    }
+}
+
 let measuringRunicWords = (runicWord) => {
+
     changeWordIntoArr(runicWord);
     countPower2();
-    console.log(newPower);
+    checkRunesOpp();
+    (isOpp) ? console.log("Change runes"): console.log(newPower);
+
 }
 let checkRunicWord = runicWord => {
     measuringRunicWords(runicWord);
@@ -282,7 +303,7 @@ let checkRunicWord = runicWord => {
 ////////////////////////////////////////////////////
 //////////////////WYTYCZNE ZADANIA//////////////////
 ////////////////////////////////////////////////////
-checkRunicWord('Eth-El-Tir-Nef'); //////////////////
+checkRunicWord('El-Eld-Sur'); //////////////////
 generateRunicWords(4); /////////////////////////////
 ////////////////////////////////////////////////////
 ////////////////////////////////////////////////////
